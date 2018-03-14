@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 //import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
 import { Platform } from 'ionic-angular';
+
+declare var google;
 
 /**
  * Generated class for the MapsGooglePage page.
@@ -22,57 +24,31 @@ export class MapsGooglePage {
   // Chave ios maps:AIzaSyADnPHCDL5KiYidKVEvXZq9BcSetBdhZec
   //ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCY84UGfDif1-XVuQWSBf4WJraBoEOedwE" --variable API_KEY_FOR_IOS="AIzaSyADnPHCDL5KiYidKVEvXZq9BcSetBdhZec"
 
+  @ViewChild('map') mapElement: ElementRef;
   map: GoogleMap;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams) {
   }
 
-  /* ionViewDidEnter() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad MapsGooglePage');
-    this.loadMap();
-  } */
-
-  ngAfterViewInit(){
-    console.log('ngAfterViewInit MapsGooglePage');
     this.loadMap();
   }
 
+  /* ngAfterViewInit(){
+    console.log('ngAfterViewInit MapsGooglePage');
+    this.loadMap();
+  } */
+
   loadMap() {
 
-    let mapOptions: GoogleMapOptions = {
-      camera: {
-        target: {
-          lat: 43.0741904,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
-      }
-    };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+      zoom: 15,
+      center: {lat: -22.903286, lng: -43.177541}
+    });
 
-    this.map = GoogleMaps.create('map_canvas', mapOptions);
-
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log('Map is ready!');
-
-        // Now you can use all methods safely.
-        this.map.addMarker({
-          title: 'Ionic',
-          icon: 'blue',
-          animation: 'DROP',
-          position: {
-            lat: 43.0741904,
-            lng: -89.3809802
-          }
-        })
-          .then(marker => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK)
-              .subscribe(() => {
-                alert('clicked');
-              });
-          });
-      });
+    this.directionsDisplay.setMap(this.map);
   }
 }
