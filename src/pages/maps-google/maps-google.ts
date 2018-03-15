@@ -1,8 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 //import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
-import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
-import { Platform } from 'ionic-angular';
+//import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 
 declare var google;
 
@@ -25,28 +24,23 @@ export class MapsGooglePage {
   //ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCY84UGfDif1-XVuQWSBf4WJraBoEOedwE" --variable API_KEY_FOR_IOS="AIzaSyADnPHCDL5KiYidKVEvXZq9BcSetBdhZec"
 
   @ViewChild('map') mapElement: ElementRef;
-  map: GoogleMap;
+  map: any;
+  start = 'chicago, il';
+  end = 'chicago, il';
+  directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams) {
-  }
+              public navParams: NavParams) {}
 
   ionViewDidEnter() {
-    console.log('ionViewDidLoad MapsGooglePage');
     this.loadMap();
   }
 
-  /* ngAfterViewInit(){
-    console.log('ngAfterViewInit MapsGooglePage');
-    this.loadMap();
-  } */
-
-  loadMap() {
-
+  loadMap(){
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      zoom: 15,
-      center: {lat: -22.903286, lng: -43.177541}
+      zoom: 13,
+      center: {lat: -22.903202, lng: -43.177310}
     });
 
     this.directionsDisplay.setMap(this.map);
