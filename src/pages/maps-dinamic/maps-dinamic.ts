@@ -8,7 +8,8 @@ import {
   GoogleMapOptions,
   Marker,
   GoogleMapsAnimation,
-  MyLocation
+  MyLocation,
+  HtmlInfoWindow
 } from '@ionic-native/google-maps';
 
 /**
@@ -57,21 +58,10 @@ export class MapsDinamicPage {
 
     this.map = GoogleMaps.create('map_canvas', mapOptions);
 
-    /* this.map = this.googleMaps.create('map_canvas', {
-      camera: {
-        target: {
-          lat: 43.0741704,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
-      }
-    }); */
-
     // Wait the maps plugin is ready until the MAP_READY event
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.mapReady = true;
-      this.map.addMarker({
+      /* this.map.addMarker({
         title: 'Ionic',
         icon: 'blue',
         animation: 'DROP',
@@ -85,6 +75,41 @@ export class MapsDinamicPage {
           .subscribe(() => {
             alert('clicked');
           });
+      }); */
+    });
+
+    /* this.map = GoogleMaps.create('map_canvas', {
+      camera: {
+        target: {lat: 35.685208, lng: -121.168225},
+        zoom: 5
+      }
+    });
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      let htmlInfoWindow = new HtmlInfoWindow();
+
+      let infoDiv: any = document.createElement("div");
+      infoDiv.innerHTML = "Click the below button.&lt;br&gt;";
+
+      let button: any = document.createElement("button");
+      button.innerText = "click here";
+      button.addEventListener("click", function() {
+        htmlInfoWindow.setBackgroundColor("#aaaaff");
+      });
+      infoDiv.appendChild(button);
+
+      htmlInfoWindow.setContent(infoDiv);
+
+      this.map.addMarker({
+        position: {lat: 35.685208, lng: -121.168225},
+        draggable: true,
+        disableAutoPan: true
+      }).then((marker: Marker) => {
+
+        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+          htmlInfoWindow.open(marker);
+        });
+        marker.trigger(GoogleMapsEvent.MARKER_CLICK);
+
       });
     });
   }
@@ -123,7 +148,7 @@ export class MapsDinamicPage {
         marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
           this.showToast('clicked!');
         });
-      });
+      }); */
   }
 
   showToast(message: string) {
