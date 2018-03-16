@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CameraPage } from '../camera/camera';
 import { MapsGooglePage } from '../maps-google/maps-google';
+import { MapsDinamicPage } from '../maps-dinamic/maps-dinamic';
 
 @Component({
   selector: 'page-home',
@@ -21,6 +22,10 @@ export class HomePage {
 
   irPageGoogleMaps(){
     this.navCtrl.push(MapsGooglePage);
+  }
+
+  irPageGoogleMapsDinamics(){
+    this.navCtrl.push(MapsDinamicPage);
   }
 
 }

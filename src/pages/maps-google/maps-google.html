@@ -14,5 +14,72 @@
 
 
 <ion-content padding>
-    <div #map id="map" style="height:100%;"></div>
+  <h1 text-center>Ionic GoogleMaps</h1>
+  <br/>
+  <ion-row text-center>
+    <span class="mapPonto">°</span>
+    <span class="mapEstatico"><h6>Exibir mapas estáticos</h6></span>
+  </ion-row>
+  <br/>
+
+  <ion-card *ngFor="let imovel of imoveis" padding>
+    <div class="mapa">
+      <img src="{{ imovel.mapa }}">
+    </div>
+    <ion-item>
+      <h2 text-wrap>{{ imovel.nome }}</h2>
+      <p>{{ imovel.valor | currency:'BRL' }}</p>
+    </ion-item>
+  </ion-card>
+
+  <p>Teste</p>
+  <br/>
+  <br/>
+  <ion-row text-center>
+    <span class="mapPonto">°</span>
+    <span class="mapEstatico"><h6>Exibir mapas dinâmicos</h6></span>
+  </ion-row>
+  <br/>
+
+  <!-- <br/>
+  <br/>
+  <ion-row text-center>
+    <span class="mapPonto">°</span>
+    <span class="mapEstatico"><h6>Recuperar o local do usuário no mapa</h6></span>
+  </ion-row>
+  <br/>
+
+  <ion-card padding>
+      <div #map1 id="map1"></div>
+  </ion-card>
+
+  <br/>
+  <br/>
+  <ion-row text-center>
+    <span class="mapPonto">°</span>
+    <span class="mapEstatico"><h6>Traçar rotas entre dois pontos distintos</h6></span>
+  </ion-row>
+  <br/>
+
+  <ion-card padding>
+      <ion-list>
+        <ion-item>
+          <ion-label>De:</ion-label>
+          <ion-input type="text" [(ngModel)]="inicio"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Para:</ion-label>
+          <ion-input type="text" [(ngModel)]="fim"></ion-input>
+        </ion-item>
+      
+        <div padding>
+          <button ion-button icon-only (click)="calculateRoute()">
+            <span class="tracaRota">Traçar rota</span><ion-icon name="search"></ion-icon>
+          </button>
+        </div>
+      </ion-list>
+
+      <div #map2 id="map2"></div>
+  </ion-card> -->
 </ion-content>
