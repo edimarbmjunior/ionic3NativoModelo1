@@ -8,8 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CameraPageModule } from '../pages/camera/camera.module';
 import { MapsGooglePageModule } from '../pages/maps-google/maps-google.module';
-import { Geolocation } from '@ionic-native/geolocation';
 import { MapsDinamicPageModule } from '../pages/maps-dinamic/maps-dinamic.module';
+import { GoogleMaps } from "@ionic-native/google-maps";
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { MapsDinamicPageModule } from '../pages/maps-dinamic/maps-dinamic.module
   providers: [
     StatusBar,
     SplashScreen,
-    Geolocation,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

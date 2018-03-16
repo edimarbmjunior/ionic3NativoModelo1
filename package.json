@@ -21,7 +21,7 @@
     "@angular/platform-browser": "5.0.3",
     "@angular/platform-browser-dynamic": "5.0.3",
     "@ionic-native/camera": "^4.5.3",
-    "@ionic-native/core": "4.4.0",
+    "@ionic-native/core": "^4.5.3",
     "@ionic-native/geolocation": "^4.5.3",
     "@ionic-native/google-maps": "^4.5.3",
     "@ionic-native/splash-screen": "4.4.0",
@@ -32,7 +32,8 @@
     "cordova-plugin-camera": "^4.0.2",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-geolocation": "^4.0.1",
-    "cordova-plugin-googlemaps": "^2.2.6",
+    "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
+    "cordova-plugin-googlemaps-sdk": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk.git",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -57,10 +58,12 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-camera": {},
       "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyCY84UGfDif1-XVuQWSBf4WJraBoEOedwE",
-        "API_KEY_FOR_IOS": "AIzaSyADnPHCDL5KiYidKVEvXZq9BcSetBdhZec",
+        "API_KEY_FOR_ANDROID": "AIzaSyAKyx9r9aQLKXmhevjQL2WM_3xwqz4QJVE",
+        "API_KEY_FOR_IOS": "AIzaSyAWJiNHmyGmme4z3p1RHO7YIzM4pXi2GG8",
         "PLAY_SERVICES_VERSION": "11.8.0",
-        "ANDROID_SUPPORT_V4_VERSION": "27.1.0"
+        "ANDROID_SUPPORT_V4_VERSION": "27.1.0",
+        "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+        "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
       },
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "São Gonçalo"
