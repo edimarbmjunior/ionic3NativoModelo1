@@ -8,6 +8,6 @@ import { MapsDinamicPage } from './maps-dinamic';
   ],
   imports: [
     IonicPageModule.forChild(MapsDinamicPage),
-  ],
+  ]
 })
 export class MapsDinamicPageModule {}

@@ -8,6 +8,6 @@ import { VoiceToTextPage } from './voice-to-text';
   ],
   imports: [
     IonicPageModule.forChild(VoiceToTextPage),
-  ],
+  ]
 })
 export class VoiceToTextPageModule {}

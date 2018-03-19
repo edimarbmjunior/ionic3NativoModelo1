@@ -1,16 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  Marker,
-  GoogleMapsAnimation,
-  MyLocation,
-  HtmlInfoWindow
-} from '@ionic-native/google-maps';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
 
 /**
  * Generated class for the MapsDinamicPage page.
@@ -23,19 +13,18 @@ import {
 @Component({
   selector: 'page-maps-dinamic',
   templateUrl: 'maps-dinamic.html',
+  providers:[
+    GoogleMaps
+  ]
 })
 export class MapsDinamicPage {
 
-  //Android:AIzaSyAKyx9r9aQLKXmhevjQL2WM_3xwqz4QJVE
-  //IOS:AIzaSyAWJiNHmyGmme4z3p1RHO7YIzM4pXi2GG8
-  //ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyAKyx9r9aQLKXmhevjQL2WM_3xwqz4QJVE" --variable API_KEY_FOR_IOS="AIzaSyAWJiNHmyGmme4z3p1RHO7YIzM4pXi2GG8"
+  //AIzaSyDUCB-dK2diAJV9IfLUly06NK8b62vH-FM
 
-  mapReady: boolean = false;
   map: GoogleMap;
-
   constructor(
     public navCtrl: NavController,
-    public toastCtrl: ToastController) {}
+    public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log("*--*-*-*-*-*-*-*-* ionViewDidLoad *--*-*-*-*-*-*-*-*");
@@ -56,108 +45,31 @@ export class MapsDinamicPage {
       }
     };
 
-    this.map = GoogleMaps.create('map_canvas', mapOptions);
+    this.map = GoogleMaps.create('map', mapOptions);
 
-    // Wait the maps plugin is ready until the MAP_READY event
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.mapReady = true;
-      /* this.map.addMarker({
-        title: 'Ionic',
-        icon: 'blue',
-        animation: 'DROP',
-        position: {
-          lat: 43.0741904,
-          lng: -89.3809802
-        }
-      })
-      .then(marker => {
-        marker.on(GoogleMapsEvent.MARKER_CLICK)
-          .subscribe(() => {
-            alert('clicked');
-          });
-      }); */
-    });
-
-    /* this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: {lat: 35.685208, lng: -121.168225},
-        zoom: 5
-      }
-    });
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      let htmlInfoWindow = new HtmlInfoWindow();
-
-      let infoDiv: any = document.createElement("div");
-      infoDiv.innerHTML = "Click the below button.&lt;br&gt;";
-
-      let button: any = document.createElement("button");
-      button.innerText = "click here";
-      button.addEventListener("click", function() {
-        htmlInfoWindow.setBackgroundColor("#aaaaff");
-      });
-      infoDiv.appendChild(button);
-
-      htmlInfoWindow.setContent(infoDiv);
-
-      this.map.addMarker({
-        position: {lat: 35.685208, lng: -121.168225},
-        draggable: true,
-        disableAutoPan: true
-      }).then((marker: Marker) => {
-
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          htmlInfoWindow.open(marker);
-        });
-        marker.trigger(GoogleMapsEvent.MARKER_CLICK);
-
-      });
-    });
-  }
-
-  onButtonClick() {
-    if (!this.mapReady) {
-      this.showToast('map is not ready yet. Please try again.');
-      return;
-    }
-    this.map.clear();
-
-    // Get the location of you
-    this.map.getMyLocation()
-      .then((location: MyLocation) => {
-        console.log(JSON.stringify(location, null ,2));
-
-        // Move the map camera to the location with animation
-        return this.map.animateCamera({
-          target: location.latLng,
-          zoom: 17,
-          tilt: 30
-        }).then(() => {
-          // add a marker
-          return this.map.addMarker({
-            title: '@ionic-native/google-maps plugin!',
-            snippet: 'This plugin is awesome!',
-            position: location.latLng,
-            animation: GoogleMapsAnimation.BOUNCE
-          });
+    // Wait the MAP_READY before using any methods.
+    this.map.one(GoogleMapsEvent.MAP_READY)
+      .then(() => {
+        console.log('Map is ready!');
+        // Now you can use all methods safely.
+        this.map.addMarker({
+          title: 'Ionic',
+          icon: 'blue',
+          animation: 'DROP',
+          position: {
+            lat: 43.0741904,
+            lng: -89.3809802
+          }
         })
-      }).then((marker: Marker) => {
-        // show the infoWindow
-        marker.showInfoWindow();
-
-        // If clicked it, display the alert
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          this.showToast('clicked!');
+        .then(marker => {
+          marker.on(GoogleMapsEvent.MARKER_CLICK)
+            .subscribe(() => {
+              alert('clicked');
+            });
         });
-      }); */
+
+      }
+    );
   }
 
-  showToast(message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 2000,
-      position: 'middle'
-    });
-
-    toast.present(toast);
-  }
 }

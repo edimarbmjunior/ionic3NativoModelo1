@@ -9,7 +9,9 @@ import { HomePage } from '../pages/home/home';
 import { CameraPageModule } from '../pages/camera/camera.module';
 import { MapsGooglePageModule } from '../pages/maps-google/maps-google.module';
 import { MapsDinamicPageModule } from '../pages/maps-dinamic/maps-dinamic.module';
-import { GoogleMaps } from "@ionic-native/google-maps";
+import { VoiceToTextPageModule } from '../pages/voice-to-text/voice-to-text.module';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { GoogleMaps } from "@ionic-native/google-maps";
     IonicModule.forRoot(MyApp),
     CameraPageModule,
     MapsGooglePageModule,
-    MapsDinamicPageModule
+    MapsDinamicPageModule,
+    VoiceToTextPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +34,8 @@ import { GoogleMaps } from "@ionic-native/google-maps";
   providers: [
     StatusBar,
     SplashScreen,
-    GoogleMaps,
+    TextToSpeech,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

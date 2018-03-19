@@ -8,9 +8,6 @@ import { MapsGooglePage } from './maps-google';
   ],
   imports: [
     IonicPageModule.forChild(MapsGooglePage),
-  ],
-  providers:[
-    MapsGooglePage
   ]
 })
 export class MapsGooglePageModule {}

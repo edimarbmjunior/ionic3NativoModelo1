@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Brincadeira</name>
-    <description>Uma brincadeira.</description>
-    <author email="edimarbmjunior@gmail.com" href="edimarbmjunior@gmail.com">edimarbmjunior@gmail.com</author>
+    <name>MyApp</name>
+    <description>An awesome Ionic/Cordova app.</description>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -12,7 +12,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
-    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
@@ -82,17 +82,18 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-camera" spec="^4.0.2" />
+    <allow-navigation href="http://10.19.4.64:8100" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.2.6">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCY84UGfDif1-XVuQWSBf4WJraBoEOedwE" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyADnPHCDL5KiYidKVEvXZq9BcSetBdhZec" />
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.1.0" />
+    </plugin>
+    <preference name="phonegap-version" value="cli-7.1.0" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="São Gonçalo" />
     </plugin>
-    <plugin name="cordova-plugin-googlemaps" spec="https://github.com/mapsplugin/cordova-plugin-googlemaps">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyAKyx9r9aQLKXmhevjQL2WM_3xwqz4QJVE" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyAWJiNHmyGmme4z3p1RHO7YIzM4pXi2GG8" />
-        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
-        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.1.0" />
-        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="This app wants to get your location while this app runs only." />
-        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="This app wants to get your location always, even this app runs in background." />
-    </plugin>
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-speechrecognition" spec="^1.2.0" />
 </widget>
