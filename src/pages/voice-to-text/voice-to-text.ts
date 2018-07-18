@@ -38,9 +38,11 @@ export class VoiceToTextPage {
   }
 
   comandoDeVoz(){
+    //Verifica se o usuario tem disponivel no celular a função para utilizar o recuros
     this.speechRecognition.isRecognitionAvailable()
       .then((available: boolean) => {
         if(available){
+          //Verifica se o usuario tem permissão de utilizar o recurso
           this.speechRecognition.hasPermission()
             .then((hasPermission: boolean) => {
               if(hasPermission){
@@ -55,6 +57,7 @@ export class VoiceToTextPage {
                   );
               }else{
                 this.msg = "O usuario necessita de permissão!";
+                //Pergunta se quer dar permissão para o usuario
                 this.speechRecognition.requestPermission()
                   .then(
                     () => {this.comandoDeVoz();},

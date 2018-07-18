@@ -15,6 +15,7 @@ Após baixar o projeto deve ser executado alguns comandos.
 
  ```
  npm install
+ npm install -g nodemon
  ionic cordova platform add android
  ionic cordova platform add browser
  ionic cordova plugin add cordova-plugin-camera
