@@ -15,6 +15,8 @@ Após baixar o projeto deve ser executado alguns comandos.
 
  ```
  npm install
+ npm install -g ionic@latest
+ npm install -g cordova
  npm install -g nodemon
  ionic cordova platform add android
  ionic cordova platform add browser
